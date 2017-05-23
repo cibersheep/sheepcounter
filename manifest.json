@@ -1,0 +1,16 @@
+{
+    "architecture": "all",
+    "description": "Click counter to keep track of sheep or other elements",
+    "framework": "ubuntu-sdk-15.04.6",
+    "hooks": {
+        "sheepcounter": {
+            "apparmor": "sheepcounter/sheepcounter.apparmor",
+            "desktop": "sheepcounter/sheepcounter.desktop"
+        }
+    },
+    "installed-size": "50",
+    "maintainer": "Joan CiberSheep <cibersheep@gmail.com>",
+    "name": "sheepcounter.cibersheep",
+    "title": "Sheep Counter",
+    "version": "0.1"
+}

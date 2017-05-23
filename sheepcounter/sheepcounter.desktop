@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sheep Counter
+Name[ca]=Comptador d'ovelles
+Exec=qmlscene %U sheepcounter/Main.qml
+Icon=sheepcounter/sheepcounter.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
