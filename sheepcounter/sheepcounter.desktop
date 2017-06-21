@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=Sheep Counter
 Name[ca]=Comptador d'ovelles
+Name[es]=Contador de ovejas
+Name[eu]=Ardi kontagailua
 Exec=qmlscene %U sheepcounter/Main.qml
 Icon=sheepcounter/sheepcounter.svg
 Terminal=false

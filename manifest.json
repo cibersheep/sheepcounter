@@ -8,9 +8,8 @@
             "desktop": "sheepcounter/sheepcounter.desktop"
         }
     },
-    "installed-size": "50",
     "maintainer": "Joan CiberSheep <cibersheep@gmail.com>",
     "name": "sheepcounter.cibersheep",
     "title": "Sheep Counter",
-    "version": "0.1"
+    "version": "0.5"
 }

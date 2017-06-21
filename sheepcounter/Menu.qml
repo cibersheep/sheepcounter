@@ -11,6 +11,7 @@ MainView {
     anchors.fill: parent
     anchorToKeyboard: false
 
+
     property real settingButtonWidth: pageMenu.width * .75
     property real settingLeftMargin: pageMenu.width * .1
 
@@ -56,7 +57,7 @@ MainView {
                     leftMargin: settingLeftMargin
 
                 }
-                contentHeight: settingsColumn.height + units.gu(10)
+                contentHeight: settingsColumn.height + buttonColumn.height + units.gu(75)
 
                 Column {
                     id: settingsColumn
@@ -166,26 +167,32 @@ MainView {
 
                     }
 
-
-
-
-                Button {
-                    id: resetButton
-
-                    width: settingButtonWidth
-                    height: units.gu(6)
-                    font.pointSize: fontsize
-                    color: UbuntuColors.red
-                    objectName: "button"
-                    text: i18n.tr("Reset all counters")
-                    onClicked: {
-                        sheepcounter.settings.sheep1 = 0
-                        sheepcounter.settings.sheep2 = 0
-                        sheepcounter.settings.sheep3 = 0
-                        sheepcounter.settings.sheep4 = 0
+		}
+		Column {
+                    id: buttonColumn
+                    spacing: units.gu(10)
+                    anchors {
+                        top: settingsColumn.bottom; left: parent.left; right: parent.right; topMargin: units.gu(10)
                     }
-                }
-            }
+
+		        Button {
+		            id: resetButton
+
+		            width: settingButtonWidth
+		            height: units.gu(6)
+		            font.pointSize: fontsize - 5
+		            color: UbuntuColors.red
+		            objectName: "button"
+		            text: i18n.tr("Reset all counters")
+		            onClicked: {
+		                sheepcounter.settings.sheep1 = 0
+		                sheepcounter.settings.sheep2 = 0
+		                sheepcounter.settings.sheep3 = 0
+		                sheepcounter.settings.sheep4 = 0
+		            }
+		        }
+		}
+            
         }
 
     }

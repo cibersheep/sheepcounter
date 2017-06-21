@@ -14,7 +14,7 @@ MainView {
     // Note! applicationName needs to match the "name" field of the click manifest
     applicationName: "sheepcounter.cibersheep"
 
-    width: units.gu(100)
+    width: units.gu(40)
     height: units.gu(75)
 
 
@@ -33,7 +33,7 @@ MainView {
     property real gridpadding: units.gu(3)
     property real buttonwidth: (grid.width - gridpadding) / 2
     property real buttonheight: (grid.height - gridpadding - units.gu(10)) / 2
-    property real fontsize: 20
+    property real fontsize: 30
     PageStack {
         id: mainPageStack
         anchors.fill: parent
@@ -49,8 +49,8 @@ MainView {
             id: pageHeader
             title: i18n.tr("Sheep Counter")
             StyleHints {
-                foregroundColor: UbuntuColors.warmGrey
-                backgroundColor: UbuntuColors.purple
+                foregroundColor: UbuntuColors.lightGrey
+                backgroundColor: UbuntuColors.darkAubergine
                 dividerColor: UbuntuColors.warmGrey
             }
             leadingActionBar {
@@ -106,6 +106,9 @@ MainView {
             onClicked: {
                 settings.sheep1 = settings.sheep1 + 1
             }
+            onPressAndHold: {
+                    settings.sheep1 = settings.sheep1 - 1
+            }
         }
         Button {
             id: button2
@@ -118,19 +121,130 @@ MainView {
             onClicked: {
                 settings.sheep2 = settings.sheep2 + 1
             }
+            onPressAndHold: {
+                    settings.sheep2 = settings.sheep2 - 1
+            }
         }
-        Label {
-            id: label
-            width: buttonwidth
-            objectName: "label"
-            text: settings.sheeptype1
-        }
-        Label {
-            id: label1
-            width: buttonwidth
-            objectName: "label"
-            text: settings.sheeptype2
-        }
+        ListItem {
+			width: buttonwidth
+			height: label.height
+			clip: true
+			divider.visible: false
+			highlightColor: "transparent"
+			Label {
+				id: label
+				width: buttonwidth
+				height: units.gu(3)
+				objectName: "label"
+				text: settings.sheeptype1
+			}
+			TextField {
+				id: editTextOne
+				visible: false
+				clip: true
+				anchors.fill: parent
+				placeholderText: i18n.tr("Type the text for first button")
+				onVisibleChanged: {
+					if (visible) {
+						focus = true;
+						label.visible = false;
+					} else {
+						label.visible = true;
+						focus = false;
+					}
+				}
+				onAccepted: {
+					if (editTextOne.text == "" || editTextOne.text == " ") {
+						sheepcounter.settings.sheeptype1 = i18n.tr("Sheep Type 1");
+					} else {
+						sheepcounter.settings.sheeptype1 = editTextOne.text;
+					}
+					editTextOne.visible = false;
+				}
+			}
+			leadingActions:  ListItemActions {	
+				actions: [
+					Action {
+						iconName: "reset"
+						onTriggered: {
+							settings.sheep1 = 0
+						}
+					}
+				]
+			}
+			trailingActions: ListItemActions {
+				actions: [
+					Action {
+						iconName: "edit"
+						text: i18n.tr("Edit")
+						onTriggered: {
+							editTextOne.text = "";
+							editTextOne.visible = true;
+						}
+					}
+				]
+			}
+		}
+        ListItem {
+			width: buttonwidth
+			height: label.height
+			clip: true
+			divider.visible: false
+			highlightColor: "transparent"
+			Label {
+				id: label1
+				width: buttonwidth
+				objectName: "label"
+				text: settings.sheeptype2
+			}
+			TextField {
+				id: editTextTwo
+				visible: false
+				clip: true
+				anchors.fill: parent
+				placeholderText: i18n.tr("Type the text for second button")
+				onVisibleChanged: {
+					if (visible) {
+						focus = true;
+						label1.visible = false;
+					} else {
+						label1.visible = true;
+						focus = false;
+					}
+				}
+				onAccepted: {
+					if (editTextTwo.text == "" || editTextTwo.text == " ") {
+						sheepcounter.settings.sheeptype2 = i18n.tr("Sheep Type 2");
+					} else {
+						sheepcounter.settings.sheeptype2 = editTextTwo.text;
+					}
+					editTextTwo.visible = false;
+				}
+			}
+			leadingActions:  ListItemActions {	
+				actions: [
+					Action {
+						iconName: "reset"
+						onTriggered: {
+							settings.sheep2 = 0
+						}
+					}
+				]
+			}
+			trailingActions: ListItemActions {
+				actions: [
+					Action {
+						iconName: "edit"
+						text: i18n.tr("Edit")
+						onTriggered: {
+							editTextTwo.text = "";
+							editTextTwo.visible = true;
+						}
+					}
+				]
+			}
+		}  
+
         Button {
             width: buttonwidth
             height: buttonheight
@@ -140,6 +254,9 @@ MainView {
             text: settings.sheep3
             onClicked: {
                 settings.sheep3 = settings.sheep3 + 1
+            }
+            onPressAndHold: {
+                    settings.sheep3 = settings.sheep3 - 1
             }
         }
         Button {
@@ -152,19 +269,129 @@ MainView {
             onClicked: {
                 settings.sheep4 = settings.sheep4 + 1
             }
+            onPressAndHold: {
+                    settings.sheep4 = settings.sheep4 - 1
+            }
         }
-        Label {
-            id: label2
-            width: buttonwidth
-            objectName: "label"
-            text: settings.sheeptype3
-        }
-        Label {
-            id: label3
-            width: buttonwidth
-            objectName: "label"
-            text: settings.sheeptype4
-        }
+        ListItem {
+			width: buttonwidth
+			height: label.height
+			clip: true
+			divider.visible: false
+			highlightColor: "transparent"
+			Label {
+				id: label2
+				width: buttonwidth
+				objectName: "label"
+				text: settings.sheeptype3
+			}
+			TextField {
+				id: editTextThree
+				visible: false
+				clip: true
+				anchors.fill: parent
+				placeholderText: i18n.tr("Type the text for third button")
+				onVisibleChanged: {
+					if (visible) {
+						focus = true;
+						label2.visible = false;
+					} else {
+						label2.visible = true;
+						focus = false;
+					}
+				}
+				onAccepted: {
+					if (editTextThree.text == "" || editTextThree.text == " ") {
+						sheepcounter.settings.sheeptype3 = i18n.tr("Sheep Type 3");
+					} else {
+						sheepcounter.settings.sheeptype3 = editTextThree.text;
+					}
+					editTextThree.visible = false;
+				}
+			}
+			leadingActions:  ListItemActions {	
+				actions: [
+					Action {
+						iconName: "reset"
+						onTriggered: {
+							settings.sheep3 = 0
+						}
+					}
+				]
+			}
+			trailingActions: ListItemActions {
+				actions: [
+					Action {
+						iconName: "edit"
+						text: i18n.tr("Edit")
+						onTriggered: {
+							editTextThree.text = "";
+							editTextThree.visible = true;
+						}
+					}
+				]
+			}
+		}
+        ListItem {
+			width: buttonwidth
+			height: label.height
+			clip: true
+			divider.visible: false
+			highlightColor: "transparent"
+			Label {
+				id: label3
+				width: buttonwidth
+				objectName: "label"
+				text: settings.sheeptype4
+			}
+			TextField {
+				id: editTextFour
+				visible: false
+				clip: true
+				anchors.fill: parent
+				placeholderText: i18n.tr("Type the text for fourth button")
+				onVisibleChanged: {
+					if (visible) {
+						focus = true;
+						label3.visible = false;
+					} else {
+						label3.visible = true;
+						focus = false;
+					}
+				}
+				onAccepted: {
+					if (editTextFour.text == "" || editTextFour.text == " ") {
+						sheepcounter.settings.sheeptype4 = i18n.tr("Sheep Type 4");
+					} else {
+						sheepcounter.settings.sheeptype4 = editTextFour.text;
+					}
+					editTextFour.visible = false;
+				}
+			}
+			leadingActions:  ListItemActions {	
+				actions: [
+					Action {
+						iconName: "reset"
+						onTriggered: {
+							settings.sheep4 = 0
+						}
+					}
+				]
+			}
+			trailingActions: ListItemActions {
+				actions: [
+					Action {
+						iconName: "edit"
+						text: i18n.tr("Edit")
+						onTriggered: {
+							editTextFour.text = "";
+							editTextFour.visible = true;
+						}
+					}
+				]
+			}
+		}
+
     }
     }
     }
