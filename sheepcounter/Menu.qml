@@ -53,9 +53,7 @@ MainView {
                 anchors.fill: parent
                 anchors {
                     top: pageHeader.bottom
-
                     leftMargin: settingLeftMargin
-
                 }
                 contentHeight: settingsColumn.height + buttonColumn.height + units.gu(75)
 
@@ -68,7 +66,6 @@ MainView {
 
                     Label {
                         id: changeLabel1
-
                         objectName: "label"
                         text: sheepcounter.settings.sheeptype1
                     }
@@ -80,14 +77,13 @@ MainView {
                         height: units.gu(5)
                         width: settingButtonWidth
                         font.pixelSize: FontUtils.sizeToPixels("medium")
-                        text: i18n.tr("Type the text for first button")
-                        onFocusChanged: {
-                            inputFrom1.text = ""
-                        }
+                        text: focus ? "" : i18n.tr("Type the text for first button")
 
                         onAccepted: {
-                            sheepcounter.settings.sheeptype1 = inputFrom1.text
-                            inputFrom1.text = ""
+							if (inputFrom1.text !== "" && inputFrom1.text != " ") {
+								sheepcounter.settings.sheeptype1 = inputFrom1.text
+                            }
+                            inputFrom1.focus = false
                         }
 
                     }
@@ -105,14 +101,13 @@ MainView {
                         height: units.gu(5)
                         width: settingButtonWidth
                         font.pixelSize: FontUtils.sizeToPixels("medium")
-                        text: i18n.tr("Type the text for second button")
-                        onFocusChanged: {
-                            inputFrom2.text = ""
-                        }
+                        text: focus ? "" : i18n.tr("Type the text for second button")
 
                         onAccepted: {
-                            sheepcounter.settings.sheeptype2 = inputFrom2.text
-                            inputFrom2.text = ""
+							if (inputFrom2.text !== "" && inputFrom2.text != " ") {
+								sheepcounter.settings.sheeptype2 = inputFrom2.text
+                            }
+                            inputFrom2.focus = false
                         }
 
                     }
@@ -130,14 +125,13 @@ MainView {
                         height: units.gu(5)
                         width: settingButtonWidth
                         font.pixelSize: FontUtils.sizeToPixels("medium")
-                        text: i18n.tr("Type the text for third button")
-                        onFocusChanged: {
-                            inputFrom3.text = ""
-                        }
+                        text: focus ? "" : i18n.tr("Type the text for third button")
 
                         onAccepted: {
-                            sheepcounter.settings.sheeptype3 = inputFrom3.text
-                            inputFrom3.text = ""
+							if (inputFrom3.text !== "" && inputFrom3.text != " ") {
+								sheepcounter.settings.sheeptype3 = inputFrom3.text
+							}
+							inputFrom3.focus = false
                         }
 
                     }
@@ -155,14 +149,13 @@ MainView {
                         height: units.gu(5)
                         width: settingButtonWidth
                         font.pixelSize: FontUtils.sizeToPixels("medium")
-                        text: i18n.tr("Type the text for fourth button")
-                        onFocusChanged: {
-                            inputFrom4.text = ""
-                        }
+                        text: focus ? "" : i18n.tr("Type the text for fourth button")
 
                         onAccepted: {
-                            sheepcounter.settings.sheeptype4 = inputFrom4.text
-                            inputFrom4.text = ""
+							if (inputFrom4.text !== "" && inputFrom4.text != " ") {
+								sheepcounter.settings.sheeptype4 = inputFrom4.text
+							}
+							inputFrom4.focus = false
                         }
 
                     }
